@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>编写restful接口流程 | xxjordan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="xxjordan,xxjordan's Blog" />
+  
+  <meta name="description" content="rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作####http请求方式及用途 GET：用于获取POST： 用于创建PUT：用于修改， 全部属性都会修改PATCH: 用于修改，部分属性进行修改DELETE: 删除 安装1pip install djangorestframework 到setting.py中将‘rest_frame">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写restful接口流程">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/编写restful接口流程/index.html">
+<meta property="og:site_name" content="xxjordan&#39;s blog">
+<meta property="og:description" content="rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作####http请求方式及用途 GET：用于获取POST： 用于创建PUT：用于修改， 全部属性都会修改PATCH: 用于修改，部分属性进行修改DELETE: 删除 安装1pip install djangorestframework 到setting.py中将‘rest_frame">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-31T12:56:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写restful接口流程">
+<meta name="twitter:description" content="rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作####http请求方式及用途 GET：用于获取POST： 用于创建PUT：用于修改， 全部属性都会修改PATCH: 用于修改，部分属性进行修改DELETE: 删除 安装1pip install djangorestframework 到setting.py中将‘rest_frame">
+  
+  
+    <link rel="icon" href="/favicon.jpg">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">xxjordan&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        xxjordan&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        专注 Python 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="xxjordan" target="_blank" href="//www.xxjordan.top">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xxjordan">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/jordan1317">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/xxjordan1317">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-编写restful接口流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      编写restful接口流程
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-05-31
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作"><a href="#rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作" class="headerlink" title="rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作"></a>rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作</h4><p>####http请求方式及用途</p>
+<p>GET：用于获取<br>POST： 用于创建<br>PUT：用于修改， 全部属性都会修改<br>PATCH: 用于修改，部分属性进行修改<br>DELETE: 删除</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install djangorestframework</span><br></pre></td></tr></table></figure>
+<h4 id="到setting-py中将‘rest-framework’注册到INSTALLED-APPS中"><a href="#到setting-py中将‘rest-framework’注册到INSTALLED-APPS中" class="headerlink" title="到setting.py中将‘rest_framework’注册到INSTALLED_APPS中"></a>到setting.py中将‘rest_framework’注册到INSTALLED_APPS中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS += ‘rest_framework&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="到urls-py中将接口路径注册到urls中"><a href="#到urls-py中将接口路径注册到urls中" class="headerlink" title="到urls.py中将接口路径注册到urls中"></a>到urls.py中将接口路径注册到urls中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from rest_framework.routers import SimpleRouter</span><br><span class="line"></span><br><span class="line">router = SimpleRouter()</span><br><span class="line"></span><br><span class="line">router.register(url, views.obj)</span><br><span class="line"></span><br><span class="line">urlpatterns+=router.urls</span><br></pre></td></tr></table></figure>
+<h4 id="在app录下创建一个serializer-py来存放序列化类-在其中创建对应模型的序列化类并继承serializers-ModelSerializer"><a href="#在app录下创建一个serializer-py来存放序列化类-在其中创建对应模型的序列化类并继承serializers-ModelSerializer" class="headerlink" title="在app录下创建一个serializer.py来存放序列化类,在其中创建对应模型的序列化类并继承serializers.ModelSerializer"></a>在app录下创建一个serializer.py来存放序列化类,在其中创建对应模型的序列化类并继承serializers.ModelSerializer</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from app.models import modelclass</span><br><span class="line">class modelserializer(serializers.ModelSerializer):</span><br><span class="line">	class Meta:</span><br><span class="line">		model = modelclass    #	指定模型</span><br><span class="line">		fields = [&apos;modelclass_name&apos;....]  #指定传输的模型的字段</span><br><span class="line">		</span><br><span class="line">		# 给每个模型对象增加一个&apos;nickname&apos;字段，并且给&apos;sex&apos;附上中文</span><br><span class="line">    def to_representation(self, instance):</span><br><span class="line">        # 序列化instance对象，instance即传入的modelclass的对象</span><br><span class="line">        data = super().to_representation(instance)</span><br><span class="line"></span><br><span class="line">        data[&apos;nickname&apos;] = ‘火星人’</span><br><span class="line"></span><br><span class="line">        if data[&apos;sex&apos;]:</span><br><span class="line">            data[&apos;sex&apos;] = &apos;男&apos;</span><br><span class="line">        else:</span><br><span class="line">            data[&apos;sex&apos;] = &apos;女&apos;</span><br><span class="line"></span><br><span class="line">        return data</span><br></pre></td></tr></table></figure>
+<h4 id="进入views-py，创建接口obj类"><a href="#进入views-py，创建接口obj类" class="headerlink" title="进入views.py，创建接口obj类"></a>进入views.py，创建接口obj类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from rest_framework import mixins, viewsets</span><br><span class="line">from app.serializer import modelserializer</span><br><span class="line">from app.models import modelclass</span><br><span class="line"></span><br><span class="line">class obj(mixins.ListModelMixin,</span><br><span class="line">                 mixins.UpdateModelMixin,</span><br><span class="line">                 mixins.CreateModelMixin,</span><br><span class="line">                 mixins.DestroyModelMixin,</span><br><span class="line">                 mixins.RetrieveModelMixin,</span><br><span class="line">                 viewsets.GenericViewSet):</span><br><span class="line">    # 获取queryset对象，这里是要输出api接口的模型数据             </span><br><span class="line">    queryset = modelclass.objects.all()</span><br><span class="line">    # 指定序列化类</span><br><span class="line">    serializer_class = modelserializer</span><br><span class="line">	</span><br><span class="line">	#重写mixins.DestroyModelMixin中的方法，使其不是直接从数据库中删除，而是软删除</span><br><span class="line">    def perform_destroy(self, instance):</span><br><span class="line">        instance.delete = True</span><br><span class="line">        instance.save()</span><br></pre></td></tr></table></figure>
+<h4 id="到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查"><a href="#到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查" class="headerlink" title="到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查"></a>到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查</h4>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年05月31日 20:56</p>
+        <p>原始链接： <a class="post-url" href="/2018/05/31/编写restful接口流程/" title="编写restful接口流程">http://yoursite.com/2018/05/31/编写restful接口流程/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.jpg" alt="xxjordan">
+                xxjordan
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/31/编写restful接口流程/&title=《编写restful接口流程》 — xxjordan's blog&pic=images/django.jpeg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/31/编写restful接口流程/&title=《编写restful接口流程》 — xxjordan's blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/31/编写restful接口流程/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《编写restful接口流程》 — xxjordan's blog&url=http://yoursite.com/2018/05/31/编写restful接口流程/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/31/编写restful接口流程/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/31/编写restful接口流程/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Django/" class="color2">Django</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作"><span class="post-toc-text">rest是web应用应该遵循的架构设计指导原则，通过不同的http请求方式，去请求统一的接口，从而获得不同的数据操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#到setting-py中将‘rest-framework’注册到INSTALLED-APPS中"><span class="post-toc-text">到setting.py中将‘rest_framework’注册到INSTALLED_APPS中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#到urls-py中将接口路径注册到urls中"><span class="post-toc-text">到urls.py中将接口路径注册到urls中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在app录下创建一个serializer-py来存放序列化类-在其中创建对应模型的序列化类并继承serializers-ModelSerializer"><span class="post-toc-text">在app录下创建一个serializer.py来存放序列化类,在其中创建对应模型的序列化类并继承serializers.ModelSerializer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进入views-py，创建接口obj类"><span class="post-toc-text">进入views.py，创建接口obj类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查"><span class="post-toc-text">到这一步，在浏览器中输入接口的url就可以获得相应的模型数据了，并且可以通过不同的http请求方式，对数据进行增删改查</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/29/Django分页/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Django分页</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="编写restful接口流程" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytDq9e8o';
+        var conf = '8e29afc247ee75bc27046b5c11d7e85a';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 xxjordan<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/git/">git</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Django/" style="font-size: 20px;">Django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Django/" style="font-size: 20px;">Django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.4.0/scrollreveal.min.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
