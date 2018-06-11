@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>xxjordan&#39;s blog</title>
+  <title>使用centos部署django项目 | xxjordan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="xxjordan,xxjordan's Blog" />
   
-  <meta name="description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
+  <meta name="description" content="使用centos部署django项目安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemctl start mariadb 设置开机启动 systemctl enable mariadb 设置密码命令: mysql_secure_installation  Enter current p">
+<meta name="keywords" content="Django">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xxjordan&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2018/06/10/centos部署/index.html">
+<meta property="og:title" content="使用centos部署django项目">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/centos部署/index.html">
 <meta property="og:site_name" content="xxjordan&#39;s blog">
-<meta property="og:description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
+<meta property="og:description" content="使用centos部署django项目安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemctl start mariadb 设置开机启动 systemctl enable mariadb 设置密码命令: mysql_secure_installation  Enter current p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centios_uwsgi.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_project_mulu.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx_peizhi.png">
-<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx_status.png">
-<meta property="og:updated_time" content="2018-06-11T12:27:58.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centos_nginx.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centios_uwsgi.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centos_project_mulu.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centos_nginx_peizhi.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centos_nginx_status.png">
+<meta property="og:updated_time" content="2018-06-11T12:36:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xxjordan&#39;s blog">
-<meta name="twitter:description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx.png">
+<meta name="twitter:title" content="使用centos部署django项目">
+<meta name="twitter:description" content="使用centos部署django项目安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemctl start mariadb 设置开机启动 systemctl enable mariadb 设置密码命令: mysql_secure_installation  Enter current p">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/31/centos部署/django/images/django_centos_nginx.png">
   
   
     <link rel="icon" href="/favicon.jpg">
@@ -118,16 +119,33 @@
         <section id="main" class="body-wrap"><article id="post-centos部署" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      使用centos部署django项目
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-05-31
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h1 id="使用centos部署django项目"><a href="#使用centos部署django项目" class="headerlink" title="使用centos部署django项目"></a>使用centos部署django项目</h1><blockquote>
-<p>title: centos部署django项目</p>
-<p>date: 2018-05-31 20:05:07</p>
-<p>tags: Django</p>
-<p>cover_picture: images/django.jpeg</p>
-</blockquote>
-<h3 id="安装MariaDB"><a href="#安装MariaDB" class="headerlink" title="安装MariaDB"></a>安装MariaDB</h3><p>安装命令</p>
+            <h1 id="使用centos部署django项目"><a href="#使用centos部署django项目" class="headerlink" title="使用centos部署django项目"></a>使用centos部署django项目</h1><h3 id="安装MariaDB"><a href="#安装MariaDB" class="headerlink" title="安装MariaDB"></a>安装MariaDB</h3><p>安装命令</p>
 <pre><code>yum -y install mariadb mariadb-server
 </code></pre><p>安装完成MariaDB，首先启动MariaDB</p>
 <pre><code>systemctl start mariadb
@@ -324,8 +342,8 @@ logto = /home/logs/uwsgi.log
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年06月11日 20:27</p>
-        <p>原始链接： <a class="post-url" href="/2018/06/10/centos部署/" title="">http://yoursite.com/2018/06/10/centos部署/</a></p>
+        <p>最后更新： 2018年06月11日 20:36</p>
+        <p>原始链接： <a class="post-url" href="/2018/05/31/centos部署/" title="使用centos部署django项目">http://yoursite.com/2018/05/31/centos部署/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.jpg" alt="xxjordan">
@@ -382,7 +400,7 @@ logto = /home/logs/uwsgi.log
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/10/centos部署/&title=xxjordan's blog&pic=http://yoursite.comimages/logo.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/31/centos部署/&title=《使用centos部署django项目》 — xxjordan's blog&pic=images/django.jpeg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -392,22 +410,22 @@ logto = /home/logs/uwsgi.log
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/10/centos部署/&title=xxjordan's blog&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/31/centos部署/&title=《使用centos部署django项目》 — xxjordan's blog&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/10/centos部署/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/31/centos部署/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=xxjordan's blog&url=http://yoursite.com/2018/06/10/centos部署/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用centos部署django项目》 — xxjordan's blog&url=http://yoursite.com/2018/05/31/centos部署/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/10/centos部署/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/31/centos部署/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -417,7 +435,7 @@ logto = /home/logs/uwsgi.log
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/06/10/centos部署/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/31/centos部署/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -426,6 +444,13 @@ logto = /home/logs/uwsgi.log
         <ul class="article-footer-menu">
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Django/" class="color2">Django</a>
+      
+  </li>
+
         </ul>
         
     </footer>
@@ -442,12 +467,12 @@ logto = /home/logs/uwsgi.log
 
 <nav id="article-nav">
   
-    <a href="/2018/06/10/PEP 8风格指南/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/31/PEP 8风格指南/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          (no title)
+          PEP8风格指南
         
       </span>
     </a>
