@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xxjordan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="xxjordan,xxjordan's Blog" />
+  
+  <meta name="description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xxjordan&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/2018/06/10/centos部署/index.html">
+<meta property="og:site_name" content="xxjordan&#39;s blog">
+<meta property="og:description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centios_uwsgi.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_project_mulu.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx_peizhi.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx_status.png">
+<meta property="og:updated_time" content="2018-06-11T12:27:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xxjordan&#39;s blog">
+<meta name="twitter:description" content="使用centos部署django项目 title: centos部署django项目 date: 2018-05-31 20:05:07 tags: Django cover_picture: images/django.jpeg  安装MariaDB安装命令 yum -y install mariadb mariadb-server 安装完成MariaDB，首先启动MariaDB systemc">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/10/centos部署/django/images/django_centos_nginx.png">
+  
+  
+    <link rel="icon" href="/favicon.jpg">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">xxjordan&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        xxjordan&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        专注 Python 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="xxjordan" target="_blank" href="//www.xxjordan.top">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xxjordan">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/jordan1317">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/xxjordan1317">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-centos部署" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="使用centos部署django项目"><a href="#使用centos部署django项目" class="headerlink" title="使用centos部署django项目"></a>使用centos部署django项目</h1><blockquote>
+<p>title: centos部署django项目</p>
+<p>date: 2018-05-31 20:05:07</p>
+<p>tags: Django</p>
+<p>cover_picture: images/django.jpeg</p>
+</blockquote>
+<h3 id="安装MariaDB"><a href="#安装MariaDB" class="headerlink" title="安装MariaDB"></a>安装MariaDB</h3><p>安装命令</p>
+<pre><code>yum -y install mariadb mariadb-server
+</code></pre><p>安装完成MariaDB，首先启动MariaDB</p>
+<pre><code>systemctl start mariadb
+</code></pre><p>设置开机启动</p>
+<pre><code>systemctl enable mariadb
+</code></pre><h3 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h3><pre><code>命令: mysql_secure_installation
+
+Enter current password for root:&lt;–初次运行直接回车
+
+设置密码
+
+Set root password? [Y/n] &lt;– 是否设置root用户密码，输入y并回车或直接回车
+
+New password: &lt;– 设置root用户的密码
+Re-enter new password: &lt;– 再输入一次你设置的密码
+
+其他配置
+
+Remove anonymous users? [Y/n] &lt;– 是否删除匿名用户，回车
+
+Disallow root login remotely? [Y/n] &lt;–是否禁止root远程登录,回车,
+
+Remove test database and access to it? [Y/n] &lt;– 是否删除test数据库，回车
+
+Reload privilege tables now? [Y/n] &lt;– 是否重新加载权限表，回车
+
+初始化MariaDB完成，接下来测试登录
+
+mysql -u root -p
+</code></pre><h3 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h3><p>在mysql数据库中的user表中可以看到默认是只能本地连接的，所有可以添加一个新的用户，该用户可以远程访问</p>
+<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1. 创建用户"></a>1. 创建用户</h4><pre><code># 先使用数据库
+use mysql;
+
+# 针对ip
+create user &apos;root&apos;@&apos;192.168.10.10&apos; identified by &apos;password&apos;;
+
+#全部
+ create user &apos;root&apos;@&apos;%&apos; identified by &apos;password&apos;;
+</code></pre><h4 id="2-授权"><a href="#2-授权" class="headerlink" title="2. 授权"></a>2. 授权</h4><pre><code># 给用户最大权限
+grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;password&apos;;
+
+# 给部分权限(test 数据库)
+
+grant all privileges on test.* to &apos;root&apos;@&apos;%&apos; identified by &apos;password&apos; with grant option;
+
+# 刷新权限表
+ flush privileges;
+
+# 查看
+show grants for &apos;root&apos;@&apos;localhost&apos;;
+</code></pre><p>接下来就可以在远程的数据库可视化工具中直接访问该服务器中的mysql了。</p>
+<pre><code># 访问数据库
+mysql -u root -p
+</code></pre><h3 id="安装python3-6"><a href="#安装python3-6" class="headerlink" title="安装python3.6"></a>安装python3.6</h3><p>在centos中，系统默认只提供python2.7的版本，但是项目我们使用的python3.6的版本。所有我们自己安装python3</p>
+<h4 id="安装Python3的方法"><a href="#安装Python3的方法" class="headerlink" title="安装Python3的方法"></a>安装Python3的方法</h4><p>首先安装依赖包</p>
+<pre><code>yum -y groupinstall &quot;Development tools&quot;
+
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+</code></pre><p>然后根据自己需求下载不同版本的Python3，我下载的是Python3.6.2</p>
+<pre><code>wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz
+
+然后解压压缩包，进入该目录，安装Python3
+
+tar -xvJf  Python-3.6.2.tar.xz
+cd Python-3.6.2
+./configure --prefix=/usr/local/python3
+make &amp;&amp; make install
+</code></pre><p>最后创建软链接</p>
+<pre><code>ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+
+ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+</code></pre><h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><h4 id="1-安装virtualenv"><a href="#1-安装virtualenv" class="headerlink" title="1. 安装virtualenv"></a>1. 安装virtualenv</h4><pre><code>yum install python-virtualenv
+</code></pre><h4 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h4><pre><code>virtualenv --no-site-packages env -p /usr/bin/python3
+
+cd env
+
+# 激活虚拟环境
+source bin/activate
+</code></pre><h4 id="3-安装环境需要的包"><a href="#3-安装环境需要的包" class="headerlink" title="3. 安装环境需要的包"></a>3. 安装环境需要的包</h4><pre><code>pip3 install -r re_install.txt
+
+其中re_install.txt文件中记录的是需要安装包的名称以及对应的版本
+</code></pre><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>该部署采用的是cenots7系统来部署</p>
+<p>Django的项目中，在工程目录下settings.py文件中有一个DEBUG=True参数，如果DEBUG=False则会出现js,css，img无法加载的情况出现。</p>
+<p>原因如下：</p>
+<p>Django框架仅在开发模式下提供静态文件服务。当我开启DEBUG模式时，Django内置的服务器是提供静态文件的服务的，所以css等文件访问都没有问题，但是关闭DEBUG模式后，Django便不提供静态文件服务了。想一想这是符合Django的哲学的：这部分事情标准服务器都很擅长，就让服务器去做吧！</p>
+<h4 id="1-测试环境中部署方式"><a href="#1-测试环境中部署方式" class="headerlink" title="1. 测试环境中部署方式"></a>1. 测试环境中部署方式</h4><p>在测试环境中一般都直接使用python manage.py runserver的方式去运行项目。其中就涉及到DEBUG=False的修改，静态目录的修改等，具体修改如下：</p>
+<pre><code>修改settings.py配置文件中的DEBUG=False模式，修改ALLOEWD_HOST=[&apos;*&apos;]
+
+修改工程目录下的urls.py
+
+from django.views.static import serve
+
+urlpatterns = [
+    url(r&apos;^admin/&apos;, admin.site.urls),
+    url(r&apos;^axf/&apos;, include(&apos;axf.urls&apos;, namespace=&apos;axf&apos;)),
+
+    # 增加以下的url路由
+    url(r&apos;^static/(?P&lt;path&gt;.*)$&apos;, serve, {&quot;document_root&quot;: settings.STATICFILES_DIRS[0]}),
+
+    url(r&apos;^$&apos;, views.home)
+]
+</code></pre><h4 id="2-正式环境中部署方式"><a href="#2-正式环境中部署方式" class="headerlink" title="2. 正式环境中部署方式"></a>2. 正式环境中部署方式</h4><p>正式环境中部署为nginx+uwsgi来部署django项目</p>
+<h5 id="2-1-安装nginx"><a href="#2-1-安装nginx" class="headerlink" title="2.1 安装nginx"></a>2.1 安装nginx</h5><p>a）添加nginx存储库</p>
+<pre><code>yum install epel-release
+</code></pre><p>b) 安装nginx</p>
+<pre><code>yum install nginx
+</code></pre><p>c) 运行nginx</p>
+<p>Nginx不会自行启动。要运行Nginx</p>
+<pre><code>systemctl start nginx
+</code></pre><p>nginx的运行命令：</p>
+<pre><code>systemctl status nginx 查看nginx的状态
+systemctl start/stop/enable/disable nginx 启动/关闭/设置开机启动/禁止开机启动
+</code></pre><p>d）系统启动时启用Nginx</p>
+<pre><code>systemctl enable nginx
+</code></pre><p>e）如果您正在运行防火墙，请运行以下命令以允许HTTP和HTTPS通信：</p>
+<pre><code>sudo firewall-cmd --permanent --zone=public --add-service=http 
+
+sudo firewall-cmd --permanent --zone=public --add-service=https
+
+sudo firewall-cmd --reload
+</code></pre><p>运行结果如下:</p>
+<p><img src="django/images/django_centos_nginx.png" alt="图"></p>
+<h4 id="3-配置uwsgi"><a href="#3-配置uwsgi" class="headerlink" title="3.配置uwsgi"></a>3.配置uwsgi</h4><h5 id="3-1-安装uwsgi"><a href="#3-1-安装uwsgi" class="headerlink" title="3.1 安装uwsgi"></a>3.1 安装uwsgi</h5><pre><code>pip3 install uwsgi
+</code></pre><p>然后进行环境变量的配置， 建立软连接</p>
+<pre><code>ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi
+</code></pre><p><img src="django/images/django_centios_uwsgi.png" alt="图"></p>
+<h4 id="4-配置项目代码，配置项目nginx，配置uwsgi-ini等"><a href="#4-配置项目代码，配置项目nginx，配置uwsgi-ini等" class="headerlink" title="4. 配置项目代码，配置项目nginx，配置uwsgi.ini等"></a>4. 配置项目代码，配置项目nginx，配置uwsgi.ini等</h4><p>本案例的配置文件，都习惯将每一个项目的配置文件，日志文件，虚拟环境放在一起，这样开发方便，运维也方便维护</p>
+<p>项目的目录结构如下：</p>
+<p><img src="django/images/django_centos_project_mulu.png" alt="图"></p>
+<p>其中：</p>
+<p>conf是配置文件，用于存放项目的nginx.conf文件，uwsgi.ini文件</p>
+<p>logs是日志文件，用于存放nginx的启动成功和失败文件，以及uwsgi的运行日志文件</p>
+<p>env是用于存放虚拟环境</p>
+<p>src是项目文件，该目录下上传的是目录代码</p>
+<h4 id="4-1-配置nginx-conf文件"><a href="#4-1-配置nginx-conf文件" class="headerlink" title="4.1 配置nginx.conf文件"></a>4.1 配置nginx.conf文件</h4><p><b>首先</b>：编写自己项目的nginx.conf文件如下：</p>
+<p>每一个项目对应有一个自己定义的nginx的配置文件，比如爱鲜蜂项目，我定义为axfnginx.conf文件</p>
+<pre><code>server {
+     listen       80;
+     server_name 39.104.176.9 localhost;
+
+     access_log /home/logs/access.log;
+     error_log /home/logs/error.log;
+
+     location / {
+         include uwsgi_params;
+         uwsgi_pass 127.0.0.1:8890;
+     }
+     location /static/ {
+         alias /home/src/axf/static/;
+         expires 30d;
+     }
+
+ }
+</code></pre><p><b>其次</b>：修改总的nginx的配置文件，让总的nginx文件包含我们自定义的项目的axfnginx.conf文件</p>
+<p>总的nginx配置文件在：/etc/nginx/nginx.conf中</p>
+<p><img src="django/images/django_centos_nginx_peizhi.png" alt="图"></p>
+<p>以上步骤操作完成以后，需要重启nginx：</p>
+<pre><code>systemctl restart nginx
+</code></pre><p>如果自定义的axfnginx.conf文件没有错误的话，查看nginx的运行状态会有如下的结果：</p>
+<p><img src="django/images/django_centos_nginx_status.png" alt="图"></p>
+<h4 id="4-2-配置uwsgi文件"><a href="#4-2-配置uwsgi文件" class="headerlink" title="4.2 配置uwsgi文件"></a>4.2 配置uwsgi文件</h4><p>在conf文件夹下除了包含自定义的axfnginx.conf文件，还有我们定义的uwsgi.ini文件</p>
+<pre><code>[uwsgi]
+projectname = axf
+base = /home/src
+
+# 守护进程
+master = true
+
+# 进程个数
+processes = 4
+
+# 虚拟环境
+pythonhome = /home/env/axfenv
+
+# 项目地址
+chdir = %(base)/%(projectname)
+
+# 指定python版本
+pythonpath = /usr/local/python3/bin/python3
+
+# 指定uwsgi文件
+module = %(projectname).wsgi
+
+# 和nginx通信地址:端口
+socket = 127.0.0.1:8890
+
+# 日志文件地址
+logto = /home/logs/uwsgi.log
+</code></pre><p>运行项目:</p>
+<pre><code>uwsgi --ini uwsgi.ini
+</code></pre><h2 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h2><p>1、安装和运行nginx和uwsgi最好都放到虚拟环境下进行</p>
+<p>2、项目不要放root目录下，否则项目跑起来之后貌似因为权限原因访问不了static文件夹</p>
+<p>3、</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年06月11日 20:27</p>
+        <p>原始链接： <a class="post-url" href="/2018/06/10/centos部署/" title="">http://yoursite.com/2018/06/10/centos部署/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.jpg" alt="xxjordan">
+                xxjordan
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/10/centos部署/&title=xxjordan's blog&pic=http://yoursite.comimages/logo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/10/centos部署/&title=xxjordan's blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/10/centos部署/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=xxjordan's blog&url=http://yoursite.com/2018/06/10/centos部署/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/10/centos部署/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/06/10/centos部署/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用centos部署django项目"><span class="post-toc-text">使用centos部署django项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装MariaDB"><span class="post-toc-text">安装MariaDB</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置密码"><span class="post-toc-text">设置密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启远程连接"><span class="post-toc-text">开启远程连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-创建用户"><span class="post-toc-text">1. 创建用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-授权"><span class="post-toc-text">2. 授权</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装python3-6"><span class="post-toc-text">安装python3.6</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装Python3的方法"><span class="post-toc-text">安装Python3的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装环境"><span class="post-toc-text">安装环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-安装virtualenv"><span class="post-toc-text">1. 安装virtualenv</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-创建虚拟环境"><span class="post-toc-text">2. 创建虚拟环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-安装环境需要的包"><span class="post-toc-text">3. 安装环境需要的包</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署"><span class="post-toc-text">部署</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-测试环境中部署方式"><span class="post-toc-text">1. 测试环境中部署方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-正式环境中部署方式"><span class="post-toc-text">2. 正式环境中部署方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-1-安装nginx"><span class="post-toc-text">2.1 安装nginx</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-配置uwsgi"><span class="post-toc-text">3.配置uwsgi</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-1-安装uwsgi"><span class="post-toc-text">3.1 安装uwsgi</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-配置项目代码，配置项目nginx，配置uwsgi-ini等"><span class="post-toc-text">4. 配置项目代码，配置项目nginx，配置uwsgi.ini等</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-配置nginx-conf文件"><span class="post-toc-text">4.1 配置nginx.conf文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-配置uwsgi文件"><span class="post-toc-text">4.2 配置uwsgi文件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#踩坑总结"><span class="post-toc-text">踩坑总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/06/10/PEP 8风格指南/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          (no title)
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/05/31/编写restful接口流程/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">编写restful接口流程</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="centos部署" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cytDq9e8o';
+        var conf = '8e29afc247ee75bc27046b5c11d7e85a';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 xxjordan<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/git/">git</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Django/" style="font-size: 20px;">Django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Django/" style="font-size: 20px;">Django</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.4.0/scrollreveal.min.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
